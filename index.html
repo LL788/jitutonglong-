@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鸡兔同笼问题</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="congratsModal" class="modal hidden" style="display: none;">
+            <div class="modal-content success">
+                <h2>🎉 恭喜你！</h2>
+                <p>答对了！</p>
+                <button onclick="closeModal('congratsModal')" class="btn green">继续</button>
+            </div>
+        </div>
+        
+        <div id="wrongModal" class="modal hidden" style="display: none;">
+            <div class="modal-content wrong">
+                <h2>😊 加油！</h2>
+                <p>答错了，继续努力！</p>
+                <button onclick="closeModal('wrongModal')" class="btn orange">继续</button>
+            </div>
+        </div>
+
+        <audio id="correctSound">
+            <source src="https://www.soundjay.com/button/sounds/button-09.mp3" type="audio/mpeg">
+        </audio>
+
+        <h1>鸡兔同笼</h1>
+        
+        <div class="main-content">
+            <div class="left-section">
+                <div class="drawing-area">
+                    <div class="animals-container">
+                        <div class="chicken">
+                            <span class="animal-emoji">🐔</span>
+                            <span class="animal-count" id="chickenCount">0</span>
+                        </div>
+                        <div class="rabbit">
+                            <span class="animal-emoji">🐰</span>
+                            <span class="animal-count" id="rabbitCount">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-section">
+                    <div class="input-group">
+                        <label>鸡的数量：</label>
+                        <input type="number" id="chickenInput" min="0">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>兔的数量：</label>
+                        <input type="number" id="rabbitInput" min="0">
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button id="checkButton" class="btn green">检查答案</button>
+                    <button id="hintButton" class="btn orange">提示</button>
+                    <button id="newProblemButton" class="btn green">新问题</button>
+                </div>
+
+                <p id="message" class="message"></p>
+            </div>
+
+            <div class="right-section">
+                <div class="problem-box">
+                    <div class="problem-info">
+                        <p>笼子里有一些鸡和兔子</p>
+                        <p>总共有 <span id="totalHeads">6</span> 个头</p>
+                        <p>总共有 <span id="totalLegs">20</span> 条腿</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="solutionHint" class="solution-hint hidden">
+            <h2>解题思路：</h2>
+            <ol>
+                <li>一只鸡有2条腿，一只兔子有4条腿</li>
+                <li>设鸡有x只，兔有y只</li>
+                <li>根据头的数量：x + y = 总头数</li>
+                <li>根据腿的数量：2x + 4y = 总腿数</li>
+            </ol>
+            <p class="hint-text">提示：头的数量不对，应该是<span id="correctHeads">6</span>个头</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
